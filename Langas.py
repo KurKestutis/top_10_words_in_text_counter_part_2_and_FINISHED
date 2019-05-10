@@ -25,12 +25,14 @@ def pasiimti():
     # return x
     # return duomenys
     # listas_is_pateikti()
+    return duomenys2
 
+listas_is_pateikti()
 
 """-----------Laukai/Mygtukai/Užrašai----------"""
 uzrasas1 = Label(langas, text="Įveskite tekstą:")
 boksas = Text(langas, height=20, width=70)
-mygtukas_pateikti = Button(langas, text="          Pateikti          ", command=lambda: pasiimti())
+mygtukas_pateikti = Button(langas, text="          Pateikti          ", command=lambda: listas_is_pateikti())
 #command=lambda: pasiimti() >>> just means do this when i press the button
 
 parasteWN = Label(langas, text="   ")
