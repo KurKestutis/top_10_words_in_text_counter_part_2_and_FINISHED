@@ -7,29 +7,28 @@ langas.title("Dažniausiai tekste panaudotų žodžių skaičiuoklė (Top - 10) 
 langas.iconbitmap(r'top_X4.ico')
 # langas.config(background="blue")
 
-# ats_list =["", ""]
-#
-# def pateikti_atsakyma(a):
-#     ats_list = a
-#     atsakymas1.set(ats_list[0])
+ats_list =["", ""]
+
+def pateikti_atsakyma(a):
+    ats_list = a
+    atsakymas1.set(ats_list[0])
 
 # Pasiimti duomenis iš bokso ir viska padaryti iki atsakymo returninimo
 
 def pasiimti():
     duomenys = boksas.get("1.0", "end-1c")
-    # duomenys2 = str(duomenys)
-    print("Štai kas paiimta iš bokso: " + str(duomenys))
+    duomenys2 = str(duomenys)
+    print("Štai kas paiimta iš bokso(duomeny): " + str(duomenys))
+    print("O štai kaip tarodo duomenys2: " + str(duomenys2))
     # x = duomenys.split()
     #
     # pateikti_atsakyma(x)
     # print(x)
     # return x
-    # return duomenys
-    # listas_is_pateikti()
-    # return duomenys2
+
     pateikta = duomenys.lower()
     for skiryba in [',', ':', '.', '"', '!', '?', '–', '(', ')', '\n', '\r']:
-        pateikta = pateikta.replace(skiryba, '')
+        pateikta = pateikta.replace(skiryba, ' ')
     visi_zodziai = pateikta.split(" ")
     # PATIKRINIMUI ATSPAUSDINAM
     print(visi_zodziai)
@@ -39,23 +38,26 @@ def pasiimti():
         suskaiciuota_dabar = zodziu_skaicius.get(zodis, 0)
         suskaiciuota_dabar_update = suskaiciuota_dabar + 1
         zodziu_skaicius[zodis] = suskaiciuota_dabar_update
-    print(zodziu_skaicius)
+    print("zodziu_skaicius yra :" + str(zodziu_skaicius))
 
     zodis = collections.namedtuple('zodis', 'score name')
     d = zodziu_skaicius
-    # d = {'vienas': 1, 'du': 2, 'trys': 3, 'keturi': 4, 'penki': 5, 'šeši': 6, 'septyni': 7, 'aštuoni': 8}
     worst = sorted(zodis(v, k) for (k, v) in d.items())
     best = sorted([zodis(v, k) for (k, v) in d.items()], reverse=True)
-    # print(best[0])
-    # print(best[0].name)
-    # print(best[0].score)
+    print(best[0])
+    print(best[0].name)
+    print(best[0].score)
 
-    pirmas_z = best[0].name
+    pirmas_z = str(best[0].name)
     pirmas_s = best[0].score
-
+    #
     print(pirmas_z)
-    print(pirmas_s)
-    return pirmas_z
+    # print(pirmas_s)
+    # pateikti_atsakyma()
+    print(best)
+    ats_list.append(pirmas_z)
+    pateikti_atsakyma(a)
+    return ats_list
 
 """-----------Laukai/Mygtukai/Užrašai----------"""
 uzrasas1 = Label(langas, text="Įveskite tekstą:")
@@ -116,6 +118,11 @@ skaicius3.grid(row=24, column=1, sticky=E)
 # ats1 = Label(langas, text=pirmas_z )
 # ats1.grid(row=22, column=2, sticky=W)
 
+"""----------ATSAKYMU SLOTAI-----------"""
+atsakymas1 = StringVar()
+ats1 = Label(langas, textvariable = atsakymas1)
+ats1.grid(row=22, column=2, sticky=W)
 
 
+print(ats_list)
 langas.mainloop()
