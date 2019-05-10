@@ -84,9 +84,6 @@ def pasiimti():
     pk10.grid(row=31, column=4, sticky=W+E)
 
 
-
-    # return best
-
 """-----------Laukai/Mygtukai/Užrašai----------"""
 uzrasas1 = Label(langas, text="Įveskite tekstą:")
 boksas = Text(langas, height=20, width=70)
@@ -113,14 +110,12 @@ uzrasas1.grid(row=1, column=1, sticky=W)
 mygtukas_pateikti.grid(row=16, column=6, sticky=E)
 
 """--------------------POPUO MENU----------------"""
-
 boksas.bind('<Button-3>', rClicker, add='')
 
 '''-----------------SCCROLLBAR-------------------'''
 #nesugebėjau padaryti:(
 
 """--------ATSAKYMU DALIES LENTELE-----------"""
-
 perskyrimas_du = Label(langas, text="   ")
 perskyrimas_du.grid(row=17, column=0, sticky=E)
 
@@ -164,7 +159,6 @@ skaicius10.grid(row=31, column=1, sticky=E)
 # atsakymas1 = StringVar()
 # ats1 = Label(langas, textvariable= atsakymas1)
 # ats1.grid(row=22, column=2, sticky=W)
-
 
 # print(ats_list)
 langas.mainloop()
