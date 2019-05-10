@@ -1,6 +1,6 @@
 from paste_6 import *
 import collections
-from funkcijos import *
+# from funkcijos import *
 
 langas = Tk()
 langas.title("Dažniausiai tekste panaudotų žodžių skaičiuoklė (Top - 10) KK X 4.0")
@@ -13,10 +13,11 @@ langas.iconbitmap(r'top_X4.ico')
 #     ats_list = a
 #     atsakymas1.set(ats_list[0])
 
-# Pasiimti duomenis iš bokso
+# Pasiimti duomenis iš bokso ir viska padaryti iki atsakymo returninimo
+
 def pasiimti():
     duomenys = boksas.get("1.0", "end-1c")
-    duomenys2 = str(duomenys)
+    # duomenys2 = str(duomenys)
     print("Štai kas paiimta iš bokso: " + str(duomenys))
     # x = duomenys.split()
     #
@@ -25,14 +26,41 @@ def pasiimti():
     # return x
     # return duomenys
     # listas_is_pateikti()
-    return duomenys2
+    # return duomenys2
+    pateikta = duomenys.lower()
+    for skiryba in [',', ':', '.', '"', '!', '?', '–', '(', ')', '\n', '\r']:
+        pateikta = pateikta.replace(skiryba, '')
+    visi_zodziai = pateikta.split(" ")
+    # PATIKRINIMUI ATSPAUSDINAM
+    print(visi_zodziai)
 
-listas_is_pateikti()
+    zodziu_skaicius = {}
+    for zodis in visi_zodziai:
+        suskaiciuota_dabar = zodziu_skaicius.get(zodis, 0)
+        suskaiciuota_dabar_update = suskaiciuota_dabar + 1
+        zodziu_skaicius[zodis] = suskaiciuota_dabar_update
+    print(zodziu_skaicius)
+
+    zodis = collections.namedtuple('zodis', 'score name')
+    d = zodziu_skaicius
+    # d = {'vienas': 1, 'du': 2, 'trys': 3, 'keturi': 4, 'penki': 5, 'šeši': 6, 'septyni': 7, 'aštuoni': 8}
+    worst = sorted(zodis(v, k) for (k, v) in d.items())
+    best = sorted([zodis(v, k) for (k, v) in d.items()], reverse=True)
+    # print(best[0])
+    # print(best[0].name)
+    # print(best[0].score)
+
+    pirmas_z = best[0].name
+    pirmas_s = best[0].score
+
+    print(pirmas_z)
+    print(pirmas_s)
+    return pirmas_z
 
 """-----------Laukai/Mygtukai/Užrašai----------"""
 uzrasas1 = Label(langas, text="Įveskite tekstą:")
 boksas = Text(langas, height=20, width=70)
-mygtukas_pateikti = Button(langas, text="          Pateikti          ", command=lambda: listas_is_pateikti())
+mygtukas_pateikti = Button(langas, text="          Pateikti          ", command=lambda: pasiimti())
 #command=lambda: pasiimti() >>> just means do this when i press the button
 
 parasteWN = Label(langas, text="   ")
@@ -85,7 +113,7 @@ skaicius3.grid(row=24, column=1, sticky=E)
 """----------ATSAKYMU SLOTAI-----------"""
 # atsakymas1 = StringVar()
 # ats1 = Label(langas, textvariable= atsakymas1)
-# ats1 = Label(langas, text= va cia bus kazkas tokio : pirmas_z )
+# ats1 = Label(langas, text=pirmas_z )
 # ats1.grid(row=22, column=2, sticky=W)
 
 

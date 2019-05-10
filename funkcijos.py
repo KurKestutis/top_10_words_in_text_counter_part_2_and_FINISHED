@@ -1,11 +1,11 @@
 import collections
 print("importuota funkcijos")
 
-duomenys2 = ("vienas, du, du, trys, trys, trys, keturi, keturi, keturi, keturi, "
-            "penki, penki, penki, penki, penki, šeši, šeši, šeši, šeši, šeši, "
-            "šeši, septyni, septyni, septyni, septyni, septyni, septyni, "
-            "septyni, aštuoni, aštuoni, aštuoni, aštuoni, aštuoni, aštuoni, aštuoni, aštuoni, devyni, devyni, devyni, devyni, devyni, devyni, devyni, devyni, devyni, "
-            "dešimt, dešimt, dešimt, dešimt, dešimt, dešimt, dešimt, dešimt, dešimt, dešimt, ")
+# duomenys2 = ("vienas, du, du, trys, trys, trys, keturi, keturi, keturi, keturi, "
+#             "penki, penki, penki, penki, penki, šeši, šeši, šeši, šeši, šeši, "
+#             "šeši, septyni, septyni, septyni, septyni, septyni, septyni, "
+#             "septyni, aštuoni, aštuoni, aštuoni, aštuoni, aštuoni, aštuoni, aštuoni, aštuoni, devyni, devyni, devyni, devyni, devyni, devyni, devyni, devyni, devyni, "
+#             "dešimt, dešimt, dešimt, dešimt, dešimt, dešimt, dešimt, dešimt, dešimt, dešimt, ")
 
 
 """------------SKAICIAVIMO FUNKCIJA -------------"""
@@ -43,7 +43,7 @@ def listas_is_pateikti():
     print(pirmas_s)
     return pirmas_z
 
-listas_is_pateikti()
+# listas_is_pateikti()
 
 
 
