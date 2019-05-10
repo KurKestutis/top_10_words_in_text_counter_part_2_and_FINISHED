@@ -7,11 +7,14 @@ langas.title("Dažniausiai tekste panaudotų žodžių skaičiuoklė (Top - 10) 
 langas.iconbitmap(r'top_X4.ico')
 # langas.config(background="blue")
 
-ats_list =["", ""]
-
-def pateikti_atsakyma(a):
-    ats_list = a
-    atsakymas1.set(ats_list[0])
+# ats_list =["", ""]
+# #
+# # def pateikti_atsakyma(a):
+# #     ats_list = a
+# #     atsakymas1.set(ats_list[0])
+#
+# def best_to_list(*args):
+#     ats_list.append()
 
 # Pasiimti duomenis iš bokso ir viska padaryti iki atsakymo returninimo
 
@@ -20,18 +23,13 @@ def pasiimti():
     duomenys2 = str(duomenys)
     print("Štai kas paiimta iš bokso(duomeny): " + str(duomenys))
     print("O štai kaip tarodo duomenys2: " + str(duomenys2))
-    # x = duomenys.split()
-    #
-    # pateikti_atsakyma(x)
-    # print(x)
-    # return x
 
     pateikta = duomenys.lower()
     for skiryba in [',', ':', '.', '"', '!', '?', '–', '(', ')', '\n', '\r']:
-        pateikta = pateikta.replace(skiryba, ' ')
+        pateikta = pateikta.replace(skiryba, '')
     visi_zodziai = pateikta.split(" ")
-    # PATIKRINIMUI ATSPAUSDINAM
-    print(visi_zodziai)
+    # PATIKRINIMUI ATSPAUSDINAM jei norim
+    # print(visi_zodziai)
 
     zodziu_skaicius = {}
     for zodis in visi_zodziai:
@@ -42,22 +40,32 @@ def pasiimti():
 
     zodis = collections.namedtuple('zodis', 'score name')
     d = zodziu_skaicius
-    worst = sorted(zodis(v, k) for (k, v) in d.items())
     best = sorted([zodis(v, k) for (k, v) in d.items()], reverse=True)
-    print(best[0])
-    print(best[0].name)
-    print(best[0].score)
+    print(best)
 
-    pirmas_z = str(best[0].name)
+    pirmas_z = best[0].name
     pirmas_s = best[0].score
     #
-    print(pirmas_z)
-    # print(pirmas_s)
-    # pateikti_atsakyma()
+    # print(best)
+    # ats_list.append(pirmas_z)
+    # pateikti_atsakyma(a)
+
+    # x = duomenys.split()
+    #
+    # pateikti_atsakyma(x)
+    # print(x)
+    # return x
     print(best)
-    ats_list.append(pirmas_z)
-    pateikti_atsakyma(a)
-    return ats_list
+    # best_to_list(best[0].name)
+    ats1 = Label(langas, text=best[0].name )
+    ats1.grid(row=22, column=2, sticky=W)
+
+    pk1 = Label(langas, text=best[0].score )
+    pk1.grid(row=22, column=4, sticky=W)
+
+
+
+    return best
 
 """-----------Laukai/Mygtukai/Užrašai----------"""
 uzrasas1 = Label(langas, text="Įveskite tekstą:")
@@ -100,10 +108,10 @@ zodis = Label(langas, text="Žodis:                                  ")
 zodis.grid(row=20, column=2, sticky=W)
 
 panaudotas_kartu = Label(langas, text="Panaudotas kartų:            ")
-panaudotas_kartu.grid(row=20, column=4, sticky=E)
+panaudotas_kartu.grid(row=20, column=4, sticky=W)
 
-procentai = Label(langas, text="Procentais:            ")
-procentai.grid(row=20, column=6, sticky=E)
+# procentai = Label(langas, text="Procentais:            ")
+# procentai.grid(row=20, column=6, sticky=E)
 
 skaicius1 = Label(langas, text="1   ")
 skaicius1.grid(row=22, column=1, sticky=E)
@@ -119,10 +127,10 @@ skaicius3.grid(row=24, column=1, sticky=E)
 # ats1.grid(row=22, column=2, sticky=W)
 
 """----------ATSAKYMU SLOTAI-----------"""
-atsakymas1 = StringVar()
-ats1 = Label(langas, textvariable = atsakymas1)
-ats1.grid(row=22, column=2, sticky=W)
+# atsakymas1 = StringVar()
+# ats1 = Label(langas, textvariable= atsakymas1)
+# ats1.grid(row=22, column=2, sticky=W)
 
 
-print(ats_list)
+# print(ats_list)
 langas.mainloop()
