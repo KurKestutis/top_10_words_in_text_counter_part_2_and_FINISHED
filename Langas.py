@@ -1,27 +1,30 @@
 from paste_6 import *
 import collections
+from funkcijos import *
 
 langas = Tk()
 langas.title("Dažniausiai tekste panaudotų žodžių skaičiuoklė (Top - 10) KK X 4.0")
 langas.iconbitmap(r'top_X4.ico')
 # langas.config(background="blue")
 
-ats_list =["", ""]
-
-def pateikti_atsakyma(a):
-    ats_list = a
-    atsakymas1.set(ats_list[0])
+# ats_list =["", ""]
+#
+# def pateikti_atsakyma(a):
+#     ats_list = a
+#     atsakymas1.set(ats_list[0])
 
 # Pasiimti duomenis iš bokso
 def pasiimti():
     duomenys = boksas.get("1.0", "end-1c")
+    duomenys2 = str(duomenys)
     print("Štai kas paiimta iš bokso: " + str(duomenys))
-    x = duomenys.split()
-
-    pateikti_atsakyma(x)
-    print(x)
-    return x
-
+    # x = duomenys.split()
+    #
+    # pateikti_atsakyma(x)
+    # print(x)
+    # return x
+    # return duomenys
+    # listas_is_pateikti()
 
 
 """-----------Laukai/Mygtukai/Užrašai----------"""
@@ -78,9 +81,10 @@ skaicius3 = Label(langas, text="3   ")
 skaicius3.grid(row=24, column=1, sticky=E)
 
 """----------ATSAKYMU SLOTAI-----------"""
-atsakymas1 = StringVar()
-ats1 = Label(langas, textvariable= atsakymas1)
-ats1.grid(row=22, column=2, sticky=W)
+# atsakymas1 = StringVar()
+# ats1 = Label(langas, textvariable= atsakymas1)
+# ats1 = Label(langas, text= va cia bus kazkas tokio : pirmas_z )
+# ats1.grid(row=22, column=2, sticky=W)
 
 
 
